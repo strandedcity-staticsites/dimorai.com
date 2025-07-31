@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demorai - Product Demo</title>
+    <style>
+        :root {
+            --primary-blue: #3b82f6;
+            --primary-dark: #2563eb;
+            --secondary-blue: #60a5fa;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --success-green: #10b981;
+            --warning-amber: #f59e0b;
+            --error-red: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 12px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Demo Section */
+        .demo-section {
+            padding: 100px 0 80px;
+            background: white;
+        }
+        
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .demo-content {
+            max-width: 600px;
+        }
+        
+        .demo-badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--primary-blue);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .demo-title {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .demo-description {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .demo-form {
+            background: var(--light-bg);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        
+        .form-button {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Interface Demo */
+        .interface-demo {
+            background: var(--dark-bg);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .interface-header {
+            background: #1e293b;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .window-control {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ef4444;
+        }
+        
+        .window-control:nth-child(2) {
+            background: #f59e0b;
+        }
+        
+        .window-control:nth-child(3) {
+            background: #10b981;
+        }
+        
+        .interface-content {
+            padding: 2rem;
+            min-height: 500px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Dashboard Preview */
+        .dashboard-preview {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .metric-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .metric-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        /* Request List */
+        .request-list {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        
+        .request-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        .request-item {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        .request-info {
+            flex: 1;
+        }
+        
+        .request-id {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+        
+        .request-description {
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+        
+        .request-status {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--secondary-blue);
+        }
+        
+        /* Features Grid */
+        .features-section {
+            padding: 80px 0;
+            background: var(--light-bg);
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+        
+        .feature-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        /* AI Chat */
+        .ai-chat {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 350px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transform: translateY(calc(100% + 2rem));
+            transition: transform 0.3s ease;
+        }
+        
+        .ai-chat.active {
+            transform: translateY(0);
+        }
+        
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chat-title {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .chat-status {
+            width: 8px;
+            height: 8px;
+            background: var(--success-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .chat-content {
+            padding: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .chat-message {
+            background: var(--light-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .chat-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .chat-toggle:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 1024px) {
+            .demo-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .metric-row {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .demo-title {
+                font-size: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .ai-chat {
+                width: calc(100% - 2rem);
+                right: 1rem;
+                left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">🤖</div>
+                <span>Demorai</span>
+            </a>
+            <a href="index.html" class="nav-button">Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Demo Section -->
+    <section class="demo-section">
+        <div class="demo-container">
+            <div class="demo-content">
+                <div class="demo-badge">🎯 See It In Action</div>
+                <h1 class="demo-title">
+                    Experience the <span class="gradient-text">Future of Maintenance</span>
+                </h1>
+                <p class="demo-description">
+                    Watch how Demorai transforms maintenance coordination from hours to minutes 
+                    with AI that speaks every language and never sleeps.
+                </p>
+                
+                <div class="demo-form">
+                    <h3 style="margin-bottom: 1.5rem;">Get Instant Access</h3>
+                    <form onsubmit="handleDemoSubmit(event)">
+                        <div class="form-group">
+                            <label class="form-label" for="name">Full Name</label>
+                            <input type="text" id="name" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Work Email</label>
+                            <input type="email" id="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="company">Company</label>
+                            <input type="text" id="company" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="units">Number of Units</label>
+                            <input type="number" id="units" class="form-input" min="100" required>
+                        </div>
+                        <button type="submit" class="form-button">Watch Demo Now</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="interface-demo">
+                <div class="interface-header">
+                    <div class="window-control"></div>
+                    <div class="window-control"></div>
+                    <div class="window-control"></div>
+                </div>
+                <div class="interface-content">
+                    <div class="dashboard-preview">
+                        <div class="metric-row">
+                            <div class="metric-card">
+                                <div class="metric-value">47</div>
+                                <div class="metric-label">Active Requests</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">4.2m</div>
+                                <div class="metric-label">Avg Response</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">94%</div>
+                                <div class="metric-label">Satisfaction</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value">24/7</div>
+                                <div class="metric-label">AI Active</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="request-list">
+                        <div class="request-header">
+                            <h3>Live Maintenance Requests</h3>
+                            <span style="color: var(--secondary-blue);">AI Processing</span>
+                        </div>
+                        <div class="request-item">
+                            <div class="request-info">
+                                <div class="request-id">#MR-2451</div>
+                                <div class="request-description">AC not cooling - Unit 204B</div>
+                            </div>
+                            <div class="request-status">AI Coordinating</div>
+                        </div>
+                        <div class="request-item">
+                            <div class="request-info">
+                                <div class="request-id">#MR-2450</div>
+                                <div class="request-description">Kitchen sink leak - Unit 512A</div>
+                            </div>
+                            <div class="request-status">Vendor Assigned</div>
+                        </div>
+                        <div class="request-item">
+                            <div class="request-info">
+                                <div class="request-id">#MR-2449</div>
+                                <div class="request-description">Bathroom door stuck - Unit 315C</div>
+                            </div>
+                            <div class="request-status">Scheduling</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">What You'll See in the Demo</h2>
+                <p class="section-subtitle">
+                    A complete walkthrough of how Demorai revolutionizes maintenance coordination
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3 class="feature-title">Omnichannel Communication</h3>
+                    <p class="feature-description">
+                        See how tenants can report issues via text, email, phone, or chat in any language, 
+                        and receive instant responses 24/7.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">AI Triage & Routing</h3>
+                    <p class="feature-description">
+                        Watch our AI diagnose issues, prioritize urgency, and automatically match 
+                        with the best available vendor in seconds.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <h3 class="feature-title">Automated Scheduling</h3>
+                    <p class="feature-description">
+                        Experience how AI coordinates between tenants and vendors to find optimal 
+                        appointment times without any manual intervention.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Real-Time Dashboard</h3>
+                    <p class="feature-description">
+                        Explore comprehensive analytics showing response times, completion rates, 
+                        cost savings, and predictive maintenance insights.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3 class="feature-title">Automated Invoicing</h3>
+                    <p class="feature-description">
+                        Learn how every repair is tracked, documented, and invoiced automatically 
+                        with complete transparency for owners.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔗</div>
+                    <h3 class="feature-title">Seamless Integration</h3>
+                    <p class="feature-description">
+                        Discover how Demorai integrates with your existing property management 
+                        software without disrupting workflows.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Chat Demo -->
+    <div class="ai-chat" id="aiChat">
+        <div class="chat-header">
+            <div class="chat-title">
+                <span class="chat-status"></span>
+                AI Assistant
+            </div>
+            <span onclick="toggleChat()" style="cursor: pointer;">✕</span>
+        </div>
+        <div class="chat-content">
+            <div class="chat-message">
+                👋 Hi! I'm the Demorai AI assistant. I just received a maintenance request from Maria in Unit 204B about her AC not cooling.
+            </div>
+            <div class="chat-message">
+                🔍 I've diagnosed this as a potential refrigerant issue based on her description. I'm now matching with HVAC specialists in your network.
+            </div>
+            <div class="chat-message">
+                ✅ Found 3 qualified vendors. TechCool HVAC has the best rating (4.9★) and can arrive today at 2:30 PM. Shall I confirm?
+            </div>
+        </div>
+    </div>
+
+    <div class="chat-toggle" onclick="toggleChat()">
+        💬
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact</a>
+        </div>
+        <p style="color: #94a3b8;">&copy; 2024 Demorai. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Demo form submission
+        function handleDemoSubmit(event) {
+            event.preventDefault();
+            alert('Thank you! Your personalized demo will begin shortly. Check your email for access details.');
+            // In a real implementation, this would submit to a backend
+        }
+
+        // Toggle AI chat
+        function toggleChat() {
+            const chat = document.getElementById('aiChat');
+            chat.classList.toggle('active');
+        }
+
+        // Simulate live updates
+        setInterval(() => {
+            const statuses = ['AI Processing', 'Vendor Matched', 'Scheduling', 'In Progress', 'Completed'];
+            const items = document.querySelectorAll('.request-status');
+            items.forEach(item => {
+                if (Math.random() > 0.7) {
+                    item.textContent = statuses[Math.floor(Math.random() * statuses.length)];
+                }
+            });
+        }, 3000);
+
+        // Auto-show chat after delay
+        setTimeout(() => {
+            toggleChat();
+        }, 5000);
+    </script>
+</body>
+</html>
