@@ -6,16 +6,18 @@
     <title>Demorai - Product Demo</title>
     <style>
         :root {
-            --primary-blue: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary-blue: #60a5fa;
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
+            --primary-brown: #8b4513;
+            --primary-dark: #654321;
+            --rust-accent: #b5651d;
+            --dark-bg: #2d1b0e;
+            --light-bg: #faf9f7;
+            --soft-beige: #f5f1eb;
+            --text-dark: #3c2817;
+            --text-light: #9b8e82;
             --success-green: #10b981;
             --warning-amber: #f59e0b;
             --error-red: #ef4444;
+            --sage: #a8a082;
         }
         
         * {
@@ -25,10 +27,10 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
-            background: var(--light-bg);
+            background: white;
         }
         
         /* Header */
@@ -38,7 +40,7 @@
             left: 0;
             right: 0;
             background: white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(139, 69, 19, 0.1);
             z-index: 1000;
         }
         
@@ -64,17 +66,18 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
         
         .nav-button {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
@@ -85,7 +88,7 @@
         
         .nav-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 12px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 12px rgba(139, 69, 19, 0.3);
         }
         
         /* Demo Section */
@@ -110,13 +113,14 @@
         
         .demo-badge {
             display: inline-block;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--primary-blue);
+            background: rgba(139, 69, 19, 0.1);
+            color: var(--primary-brown);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
+            border: 1px solid rgba(139, 69, 19, 0.2);
         }
         
         .demo-title {
@@ -126,7 +130,7 @@
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            background: linear-gradient(135deg, var(--rust-accent) 0%, var(--primary-brown) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -139,10 +143,10 @@
         }
         
         .demo-form {
-            background: var(--light-bg);
+            background: var(--soft-beige);
             padding: 2rem;
             border-radius: 16px;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #ede8e0;
         }
         
         .form-group {
@@ -159,22 +163,23 @@
         .form-input {
             width: 100%;
             padding: 0.75rem 1rem;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #ede8e0;
             border-radius: 8px;
             font-size: 1rem;
             transition: all 0.3s ease;
+            background: white;
         }
         
         .form-input:focus {
             outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: var(--primary-brown);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
         }
         
         .form-button {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             color: white;
             border: none;
             border-radius: 8px;
@@ -186,7 +191,7 @@
         
         .form-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
         }
         
         /* Interface Demo */
@@ -194,11 +199,11 @@
             background: var(--dark-bg);
             border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
         }
         
         .interface-header {
-            background: #1e293b;
+            background: #3c2817;
             padding: 1rem;
             display: flex;
             align-items: center;
@@ -229,11 +234,12 @@
         
         /* Dashboard Preview */
         .dashboard-preview {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(245, 241, 235, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 16px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
+            border: 1px solid rgba(245, 241, 235, 0.2);
         }
         
         .metric-row {
@@ -244,29 +250,31 @@
         }
         
         .metric-card {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(245, 241, 235, 0.15);
             padding: 1.5rem;
             border-radius: 12px;
             text-align: center;
+            border: 1px solid rgba(245, 241, 235, 0.3);
         }
         
         .metric-value {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--secondary-blue);
+            color: var(--rust-accent);
             margin-bottom: 0.5rem;
         }
         
         .metric-label {
-            color: #94a3b8;
+            color: #c4b5a0;
             font-size: 0.9rem;
         }
         
         /* Request List */
         .request-list {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(245, 241, 235, 0.1);
             border-radius: 16px;
             padding: 1.5rem;
+            border: 1px solid rgba(245, 241, 235, 0.2);
         }
         
         .request-header {
@@ -278,7 +286,7 @@
         }
         
         .request-item {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(245, 241, 235, 0.15);
             border-radius: 8px;
             padding: 1rem;
             margin-bottom: 1rem;
@@ -286,6 +294,7 @@
             justify-content: space-between;
             align-items: center;
             color: white;
+            border: 1px solid rgba(245, 241, 235, 0.3);
         }
         
         .request-info {
@@ -298,7 +307,7 @@
         }
         
         .request-description {
-            color: #94a3b8;
+            color: #c4b5a0;
             font-size: 0.9rem;
         }
         
@@ -307,14 +316,15 @@
             border-radius: 20px;
             font-size: 0.85rem;
             font-weight: 500;
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--secondary-blue);
+            background: rgba(181, 101, 29, 0.3);
+            color: var(--rust-accent);
+            border: 1px solid rgba(181, 101, 29, 0.5);
         }
         
         /* Features Grid */
         .features-section {
             padding: 80px 0;
-            background: var(--light-bg);
+            background: var(--soft-beige);
         }
         
         .features-container {
@@ -351,25 +361,26 @@
             background: white;
             padding: 2rem;
             border-radius: 16px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(139, 69, 19, 0.05);
             transition: all 0.3s ease;
+            border: 1px solid #ede8e0;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.1);
         }
         
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             color: white;
             border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
+            font-size: 1.5rem;
             margin-bottom: 1.5rem;
         }
         
@@ -377,6 +388,7 @@
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--text-dark);
+            font-weight: 600;
         }
         
         .feature-description {
@@ -392,10 +404,11 @@
             width: 350px;
             background: white;
             border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.2);
             overflow: hidden;
             transform: translateY(calc(100% + 2rem));
             transition: transform 0.3s ease;
+            border: 1px solid #ede8e0;
         }
         
         .ai-chat.active {
@@ -403,7 +416,7 @@
         }
         
         .chat-header {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             color: white;
             padding: 1rem 1.5rem;
             display: flex;
@@ -438,12 +451,13 @@
         }
         
         .chat-message {
-            background: var(--light-bg);
+            background: var(--soft-beige);
             padding: 1rem;
             border-radius: 12px;
             margin-bottom: 1rem;
             font-size: 0.9rem;
             line-height: 1.5;
+            border: 1px solid #ede8e0;
         }
         
         .chat-toggle {
@@ -452,7 +466,7 @@
             right: 2rem;
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -460,8 +474,9 @@
             justify-content: center;
             font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
             transition: all 0.3s ease;
+            border: none;
         }
         
         .chat-toggle:hover {
@@ -484,7 +499,7 @@
         }
         
         .footer-links a {
-            color: #94a3b8;
+            color: #c4b5a0;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -526,7 +541,7 @@
     <header class="header">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon">🤖</div>
+                <div class="logo-icon">D</div>
                 <span>Demorai</span>
             </a>
             <a href="index.html" class="nav-button">Back to Home</a>
@@ -537,7 +552,6 @@
     <section class="demo-section">
         <div class="demo-container">
             <div class="demo-content">
-                <div class="demo-badge">🎯 See It In Action</div>
                 <h1 class="demo-title">
                     Experience the <span class="gradient-text">Future of Maintenance</span>
                 </h1>
@@ -547,7 +561,7 @@
                 </p>
                 
                 <div class="demo-form">
-                    <h3 style="margin-bottom: 1.5rem;">Get Instant Access</h3>
+                    <h3 style="margin-bottom: 1.5rem; color: var(--text-dark);">Get Instant Access</h3>
                     <form onsubmit="handleDemoSubmit(event)">
                         <div class="form-group">
                             <label class="form-label" for="name">Full Name</label>
@@ -601,7 +615,7 @@
                     <div class="request-list">
                         <div class="request-header">
                             <h3>Live Maintenance Requests</h3>
-                            <span style="color: var(--secondary-blue);">AI Processing</span>
+                            <span style="color: var(--rust-accent);">AI Processing</span>
                         </div>
                         <div class="request-item">
                             <div class="request-info">
@@ -641,7 +655,13 @@
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
+                    <div class="feature-icon">
+                        <!-- Network/Omnichannel Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16.24 7.76a6 6 0 0 1 0 8.49m-8.48-.01a6 6 0 0 1 0-8.49m11.31-2.82a10 10 0 0 1 0 14.14m-14.14 0a10 10 0 0 1 0-14.14" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Omnichannel Communication</h3>
                     <p class="feature-description">
                         See how tenants can report issues via text, email, phone, or chat in any language, 
@@ -649,7 +669,16 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon">
+                        <!-- Robot/AI Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="11" width="18" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 7v4" stroke="currentColor" stroke-width="2"/>
+                            <line x1="8" y1="16" x2="8" y2="16" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="16" x2="16" y2="16" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">AI Triage & Routing</h3>
                     <p class="feature-description">
                         Watch our AI diagnose issues, prioritize urgency, and automatically match 
@@ -657,7 +686,15 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📅</div>
+                    <div class="feature-icon">
+                        <!-- Calendar Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                            <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                            <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Automated Scheduling</h3>
                     <p class="feature-description">
                         Experience how AI coordinates between tenants and vendors to find optimal 
@@ -665,7 +702,13 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon">
+                        <!-- Dashboard Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M9 9h1v1h-1zM14 9h1v1h-1zM9 14h1v1h-1zM14 14h1v1h-1z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Real-Time Dashboard</h3>
                     <p class="feature-description">
                         Explore comprehensive analytics showing response times, completion rates, 
@@ -673,7 +716,12 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💰</div>
+                    <div class="feature-icon">
+                        <!-- Dollar Sign Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Automated Invoicing</h3>
                     <p class="feature-description">
                         Learn how every repair is tracked, documented, and invoiced automatically 
@@ -681,7 +729,13 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔗</div>
+                    <div class="feature-icon">
+                        <!-- Link/Integration Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2"/>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Seamless Integration</h3>
                     <p class="feature-description">
                         Discover how Demorai integrates with your existing property management 
@@ -714,9 +768,12 @@
         </div>
     </div>
 
-    <div class="chat-toggle" onclick="toggleChat()">
-        💬
-    </div>
+    <button class="chat-toggle" onclick="toggleChat()">
+        <!-- Chat Icon -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/>
+        </svg>
+    </button>
 
     <!-- Footer -->
     <footer class="footer">
@@ -726,7 +783,7 @@
             <a href="#">Terms of Service</a>
             <a href="#">Contact</a>
         </div>
-        <p style="color: #94a3b8;">&copy; 2024 Demorai. All rights reserved.</p>
+        <p style="color: #c4b5a0;">&copy; 2024 Demorai. All rights reserved.</p>
     </footer>
 
     <script>

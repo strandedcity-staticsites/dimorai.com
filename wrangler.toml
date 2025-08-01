@@ -1,0 +1,23 @@
+# Cloudflare Worker configuration for Demorai contact form handler
+name = "dimorai-form-handler"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Environment variables (secrets will be added via CLI)
+[vars]
+# Add any non-secret environment variables here
+
+# Production environment
+[env.production]
+name = "dimorai-form-handler"
+routes = [
+  { pattern = "form-handler.your-domain.com/*", zone_name = "your-domain.com" }
+]
+
+# Development environment  
+[env.development]
+name = "dimorai-form-handler-dev"
+
+# Required secrets (set these via: wrangler secret put VARIABLE_NAME)
+# RESEND_API_KEY - Your Resend API key
+# NOTIFICATION_EMAIL - Email address to receive notifications

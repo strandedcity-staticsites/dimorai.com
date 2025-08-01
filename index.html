@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demorai - AI-Powered Property Maintenance Coordination</title>
+    <title>Dimorai - AI-Powered Property Maintenance Coordination</title>
     <style>
         :root {
-            --primary-blue: #3b82f6;
-            --primary-dark: #2563eb;
-            --secondary-blue: #60a5fa;
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
+            --primary-brown: #8b4513;
+            --primary-dark: #654321;
+            --rust-accent: #b5651d;
+            --dark-bg: #2d1b0e;
+            --light-bg: #faf9f7;
+            --soft-beige: #f5f1eb;
+            --text-dark: #3c2817;
+            --text-light: #9b8e82;
             --success-green: #10b981;
             --warning-amber: #f59e0b;
             --error-red: #ef4444;
+            --sage: #a8a082;
         }
         
         * {
@@ -25,7 +27,7 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             color: var(--text-dark);
             overflow-x: hidden;
@@ -39,14 +41,14 @@
             right: 0;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(139, 69, 19, 0.1);
             z-index: 1000;
             transition: all 0.3s ease;
         }
         
         .header.scrolled {
             background: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(139, 69, 19, 0.1);
         }
         
         .nav-container {
@@ -71,13 +73,14 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
         }
         
         .nav-menu {
@@ -95,42 +98,63 @@
         }
         
         .nav-link:hover {
-            color: var(--primary-blue);
+            color: var(--primary-brown);
         }
         
         .cta-button {
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             color: white;
             padding: 0.75rem 1.5rem;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 6px rgba(139, 69, 19, 0.2);
         }
         
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 12px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 12px rgba(139, 69, 19, 0.3);
         }
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1f3a 100%);
-            color: white;
-            padding: 120px 0 80px;
+            background: linear-gradient(135deg, white 0%, #faf9f7 100%);
+            color: var(--text-dark);
+            padding-top: 80px;
             position: relative;
             overflow: hidden;
         }
         
-        .hero::before {
+        .hero-image-header {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding: 2rem;
+            background: #fff5e9;
+        }
+        
+        .hero-image-header img {
+            max-width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 16px;
+        }
+        
+        .hero-content-section {
+            background: linear-gradient(135deg, white 0%, #faf9f7 100%);
+            padding: 3rem 0 5rem;
+            position: relative;
+        }
+        
+        .hero-content-section::before {
             content: '';
             position: absolute;
             top: -50%;
             right: -30%;
             width: 80%;
             height: 200%;
-            background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(181, 101, 29, 0.05) 0%, transparent 70%);
             animation: float 20s ease-in-out infinite;
         }
         
@@ -146,22 +170,26 @@
             padding: 0 2rem;
             position: relative;
             z-index: 1;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 4rem;
+            align-items: start;
         }
         
         .hero-content {
-            max-width: 800px;
+            max-width: 600px;
         }
         
         .hero-badge {
             display: inline-block;
-            background: rgba(59, 130, 246, 0.2);
-            color: var(--secondary-blue);
+            background: rgba(181, 101, 29, 0.2);
+            color: var(--rust-accent);
             padding: 0.5rem 1rem;
             border-radius: 20px;
             font-size: 0.9rem;
             font-weight: 600;
             margin-bottom: 1.5rem;
-            border: 1px solid rgba(59, 130, 246, 0.3);
+            border: 1px solid rgba(181, 101, 29, 0.3);
         }
         
         .hero-title {
@@ -172,14 +200,14 @@
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, var(--secondary-blue) 0%, var(--primary-blue) 100%);
+            background: linear-gradient(135deg, var(--rust-accent) 0%, var(--primary-brown) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
         
         .hero-subtitle {
             font-size: 1.3rem;
-            color: #94a3b8;
+            color: var(--text-light);
             margin-bottom: 2rem;
             line-height: 1.6;
         }
@@ -193,11 +221,14 @@
         
         .hero-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 2rem;
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 1.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(139, 69, 19, 0.1);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.05);
         }
         
         .stat {
@@ -207,12 +238,12 @@
         .stat-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--secondary-blue);
+            color: var(--primary-brown);
             margin-bottom: 0.5rem;
         }
         
         .stat-label {
-            color: #94a3b8;
+            color: var(--text-light);
             font-size: 0.9rem;
         }
         
@@ -253,35 +284,38 @@
         }
         
         .problem-card {
-            background: var(--light-bg);
+            background: var(--soft-beige);
             padding: 2rem;
             border-radius: 16px;
             position: relative;
             transition: all 0.3s ease;
+            border: 1px solid #ede8e0;
         }
         
         .problem-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.1);
         }
         
         .problem-icon {
             width: 60px;
             height: 60px;
-            background: #fee2e2;
-            color: var(--error-red);
+            background: #fdeee6;
+            color: var(--rust-accent);
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
+            border: 1px solid #f2d7c4;
         }
         
         .problem-title {
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--text-dark);
+            font-weight: 600;
         }
         
         .problem-description {
@@ -292,7 +326,7 @@
         /* Features Section */
         .features-section {
             padding: 80px 0;
-            background: var(--light-bg);
+            background: var(--soft-beige);
         }
         
         .features-grid {
@@ -308,19 +342,19 @@
             border-radius: 16px;
             text-align: center;
             transition: all 0.3s ease;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #ede8e0;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary-blue);
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.1);
+            border-color: var(--primary-brown);
         }
         
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             color: white;
             border-radius: 20px;
             display: flex;
@@ -334,6 +368,7 @@
             font-size: 1.3rem;
             margin-bottom: 1rem;
             color: var(--text-dark);
+            font-weight: 600;
         }
         
         .feature-description {
@@ -354,17 +389,40 @@
         }
         
         .calculator-wrapper {
-            background: var(--light-bg);
+            background: var(--soft-beige);
             border-radius: 24px;
             padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.05);
+            border: 1px solid #ede8e0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .calculator-form {
+            display: flex;
+            flex-direction: column;
         }
         
         .input-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .calculator-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .calculator-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(139, 69, 19, 0.2);
         }
         
         .input-group {
@@ -380,22 +438,23 @@
         
         .input-field {
             padding: 0.75rem 1rem;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #ede8e0;
             border-radius: 8px;
             font-size: 1rem;
             transition: all 0.3s ease;
+            background: white;
         }
         
         .input-field:focus {
             outline: none;
-            border-color: var(--primary-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            border-color: var(--primary-brown);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
         }
         
         .calculate-btn {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             color: white;
             border: none;
             border-radius: 12px;
@@ -407,12 +466,12 @@
         
         .calculate-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
         }
         
         .results-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
             margin-top: 2rem;
         }
@@ -422,7 +481,7 @@
             padding: 1.5rem;
             border-radius: 12px;
             text-align: center;
-            border: 1px solid #e2e8f0;
+            border: 1px solid #ede8e0;
         }
         
         .result-label {
@@ -434,35 +493,36 @@
         .result-value {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary-blue);
+            color: var(--primary-brown);
         }
         
         /* Comparison Section */
         .comparison-section {
             padding: 80px 0;
-            background: var(--dark-bg);
-            color: white;
+            background: var(--soft-beige);
+            color: var(--text-dark);
         }
         
         .comparison-table {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
+            background: white;
+            border: 1px solid #ede8e0;
             border-radius: 24px;
             overflow: hidden;
             margin-top: 60px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.05);
         }
         
         .table-header {
             display: grid;
             grid-template-columns: 2fr repeat(4, 1fr);
-            background: rgba(255, 255, 255, 0.08);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            background: var(--soft-beige);
+            border-bottom: 1px solid #ede8e0;
         }
         
         .header-cell {
             padding: 2rem 1.5rem;
             text-align: center;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid #ede8e0;
         }
         
         .header-cell:first-child {
@@ -471,7 +531,7 @@
         
         .header-cell:last-child {
             border-right: none;
-            background: rgba(59, 130, 246, 0.2);
+            background: rgba(139, 69, 19, 0.1);
             position: relative;
         }
         
@@ -480,7 +540,8 @@
             top: -15px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
+            color: white;
             padding: 0.3rem 1rem;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -499,23 +560,23 @@
         }
         
         .table-body {
-            background: rgba(255, 255, 255, 0.02);
+            background: white;
         }
         
         .table-row {
             display: grid;
             grid-template-columns: 2fr repeat(4, 1fr);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid #ede8e0;
         }
         
         .table-row:hover {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--soft-beige);
         }
         
         .table-cell {
             padding: 1.5rem;
             text-align: center;
-            border-right: 1px solid rgba(255, 255, 255, 0.05);
+            border-right: 1px solid #ede8e0;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -529,7 +590,7 @@
         
         .table-cell:last-child {
             border-right: none;
-            background: rgba(59, 130, 246, 0.05);
+            background: rgba(139, 69, 19, 0.05);
         }
         
         .check {
@@ -547,10 +608,231 @@
             font-size: 1.5rem;
         }
         
+        /* Mobile Comparison Layout */
+        .mobile-comparison {
+            display: none;
+            gap: 1.5rem;
+            margin-top: 60px;
+        }
+        
+        .mobile-solution-card {
+            background: white;
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid #ede8e0;
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.05);
+        }
+        
+        .mobile-solution-card.recommended {
+            border: 2px solid var(--primary-brown);
+            background: rgba(139, 69, 19, 0.02);
+        }
+        
+        .mobile-solution-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ede8e0;
+        }
+        
+        .mobile-solution-header .recommended-badge {
+            position: static;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            transform: none;
+        }
+        
+        .mobile-feature-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        
+        .mobile-feature-row:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-feature-name {
+            font-weight: 500;
+            color: var(--text-dark);
+            flex: 1;
+        }
+        
+        .mobile-feature-value {
+            font-weight: 600;
+            margin-left: 1rem;
+        }
+        
+        /* Contact Form Section */
+        .contact-section {
+            padding: 80px 0;
+            background: var(--soft-beige);
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+            align-items: start;
+        }
+        
+        .contact-form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.05);
+            border: 1px solid #ede8e0;
+        }
+        
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+        
+        .form-input {
+            padding: 0.875rem 1rem;
+            border: 1px solid #ede8e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-brown);
+            box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+        }
+        
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .form-submit-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .form-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(139, 69, 19, 0.3);
+        }
+        
+        .form-submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-loading {
+            display: none;
+        }
+        
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        
+        .form-message.success {
+            background: #d1fae5;
+            color: #065f46;
+            border: 1px solid #34d399;
+        }
+        
+        .form-message.error {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #f87171;
+        }
+        
+        .contact-benefits {
+            background: white;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.05);
+            border: 1px solid #ede8e0;
+        }
+        
+        .contact-benefits h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-dark);
+        }
+        
+        .benefits-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .benefit-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .benefits-list strong {
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+        
+        .benefits-list p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.95rem;
+        }
+        
         /* CTA Section */
         .cta-section {
             padding: 100px 0;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-dark) 100%);
+            background: linear-gradient(135deg, var(--primary-brown) 0%, var(--primary-dark) 100%);
             color: white;
             text-align: center;
             position: relative;
@@ -601,7 +883,7 @@
         
         .cta-primary {
             background: white;
-            color: var(--primary-blue);
+            color: var(--primary-brown);
             padding: 1rem 2rem;
             border-radius: 12px;
             text-decoration: none;
@@ -637,7 +919,7 @@
             background: var(--dark-bg);
             color: white;
             padding: 60px 0 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid #ede8e0;
         }
         
         .footer-container {
@@ -667,7 +949,7 @@
         }
         
         .footer-links a {
-            color: #94a3b8;
+            color: #c4b5a0;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -679,14 +961,19 @@
         .footer-bottom {
             text-align: center;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
+            border-top: 1px solid rgba(196, 181, 160, 0.2);
+            color: #c4b5a0;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-menu {
                 display: none;
+            }
+            
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
             
             .hero-title {
@@ -697,13 +984,54 @@
                 font-size: 1.1rem;
             }
             
-            .table-header, .table-row {
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .results-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            .calculator-wrapper {
                 grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-table {
+                display: none;
+            }
+            
+            .mobile-comparison {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
             
             .header-cell, .table-cell {
                 border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid #ede8e0;
             }
             
             .recommended-badge {
@@ -719,8 +1047,8 @@
     <header class="header" id="header">
         <div class="nav-container">
             <a href="#" class="logo">
-                <div class="logo-icon">🤖</div>
-                <span>Demorai</span>
+                <div class="logo-icon">D</div>
+                <span>Dimorai</span>
             </a>
             <nav>
                 <ul class="nav-menu">
@@ -729,7 +1057,7 @@
                     <li><a href="#compare" class="nav-link">Compare</a></li>
                     <li><a href="demo.html" class="nav-link">Product Demo</a></li>
                     <li><a href="timeline.html" class="nav-link">Implementation</a></li>
-                    <li><a href="#" class="cta-button">Schedule Demo</a></li>
+                    <li><a href="#contact" class="cta-button">Get Free Analysis</a></li>
                 </ul>
             </nav>
         </div>
@@ -737,19 +1065,23 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-badge">🚀 The Future of Property Maintenance is Here</div>
-                <h1 class="hero-title">
-                    Transform Maintenance from <span class="gradient-text">12 Hours to 5 Minutes</span>
-                </h1>
-                <p class="hero-subtitle">
-                    The only AI-powered maintenance coordination platform that speaks every language, 
-                    works 24/7, and saves property managers 60% on operational costs.
-                </p>
-                <div class="hero-cta">
-                    <a href="#" class="cta-button">Get Your Free ROI Analysis</a>
-                    <a href="demo.html" class="cta-secondary" style="color: white; margin-left: 1rem;">See It In Action →</a>
+        <div class="hero-image-header">
+            <img src="dimorai-header.png" alt="Dimorai AI-Powered Property Management Platform" />
+        </div>
+        <div class="hero-content-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        Transform Maintenance from <span class="gradient-text">12 Hours to 5 Minutes</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        The only AI-powered maintenance coordination platform that speaks every language, 
+                        works 24/7, and saves property managers 60% on operational costs.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#" class="cta-button">Get Your Free ROI Analysis</a>
+                        <a href="demo.html" class="cta-secondary" style="color: var(--text-dark); margin-left: 1rem;">See It In Action →</a>
+                    </div>
                 </div>
                 <div class="hero-stats">
                     <div class="stat">
@@ -784,7 +1116,13 @@
             </div>
             <div class="problem-grid">
                 <div class="problem-card">
-                    <div class="problem-icon">⏱️</div>
+                    <div class="problem-icon">
+                        <!-- Clock Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="problem-title">19 Hours Per Week Wasted</h3>
                     <p class="problem-description">
                         Service teams spend nearly half their work week on maintenance coordination, 
@@ -792,7 +1130,12 @@
                     </p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">💸</div>
+                    <div class="problem-icon">
+                        <!-- Money Loss Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="problem-title">8-12% of Rent on Management</h3>
                     <p class="problem-description">
                         Property managers charge significant fees, with maintenance coordination 
@@ -800,7 +1143,12 @@
                     </p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">📞</div>
+                    <div class="problem-icon">
+                        <!-- Phone Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="problem-title">200+ Monthly Work Orders</h3>
                     <p class="problem-description">
                         A 500-unit property averages over 200 maintenance requests per month, 
@@ -808,7 +1156,12 @@
                     </p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">🌙</div>
+                    <div class="problem-icon">
+                        <!-- Moon/After Hours Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="problem-title">40% Requests After Hours</h3>
                     <p class="problem-description">
                         Nearly half of maintenance requests come outside business hours, 
@@ -816,7 +1169,14 @@
                     </p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">🌍</div>
+                    <div class="problem-icon">
+                        <!-- Globe/Language Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="problem-title">Language Barriers</h3>
                     <p class="problem-description">
                         Diverse tenant populations struggle to communicate issues effectively, 
@@ -824,7 +1184,13 @@
                     </p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">📉</div>
+                    <div class="problem-icon">
+                        <!-- Trending Down Icon -->
+                        <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                            <polyline points="23 18 13.5 8.5 8.5 13.5 1 6" stroke="currentColor" stroke-width="2"/>
+                            <polyline points="17 18 23 18 23 12" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="problem-title">High Staff Turnover</h3>
                     <p class="problem-description">
                         Maintenance coordinators burn out from repetitive, stressful work, 
@@ -846,7 +1212,13 @@
             </div>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">🌐</div>
+                    <div class="feature-icon">
+                        <!-- Network/Omnichannel Icon -->
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 1v6m6 5H12m6 0a6 6 0 0 1-6 6v-6m-6-6H1m5 0a6 6 0 0 0 6 6H6" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">True Omnichannel AI</h3>
                     <p class="feature-description">
                         Seamlessly communicate via email, phone, text, or chat. Our AI understands 
@@ -854,7 +1226,17 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🗣️</div>
+                    <div class="feature-icon">
+                        <!-- Languages Icon -->
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 8l6 6" stroke="currentColor" stroke-width="2"/>
+                            <path d="M4 14l6-6 2-3" stroke="currentColor" stroke-width="2"/>
+                            <path d="M2 5h12" stroke="currentColor" stroke-width="2"/>
+                            <path d="M7 2h1" stroke="currentColor" stroke-width="2"/>
+                            <path d="M22 22l-5-10-5 10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M14 18h6" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">51+ Language Support</h3>
                     <p class="feature-description">
                         Written communication in 51 languages, voice support in 7 languages. 
@@ -862,7 +1244,12 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
+                    <div class="feature-icon">
+                        <!-- Lightning/Speed Icon -->
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                            <polygon points="13,2 3,14 12,14 11,22 21,10 12,10" stroke="currentColor" stroke-width="2" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Under 5 Minute Response</h3>
                     <p class="feature-description">
                         Beat the industry standard of 12+ hours. Our AI responds instantly 24/7/365, 
@@ -870,7 +1257,14 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🤝</div>
+                    <div class="feature-icon">
+                        <!-- Handshake/Matching Icon -->
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                            <path d="M11 17a4 4 0 0 1-8 0V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2"/>
+                            <path d="M16 7h3a2 2 0 0 1 2 2v8a4 4 0 0 1-4 4h-2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M11 7h2" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Smart Vendor Matching</h3>
                     <p class="feature-description">
                         AI instantly matches issues with qualified vendors based on expertise, 
@@ -878,7 +1272,17 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🔮</div>
+                    <div class="feature-icon">
+                        <!-- Crystal Ball/Predictive Icon -->
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 12l2 2 4-4" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 2v2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M12 20v2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M4.93 4.93l1.41 1.41" stroke="currentColor" stroke-width="2"/>
+                            <path d="M17.66 17.66l1.41 1.41" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Predictive Maintenance</h3>
                     <p class="feature-description">
                         Identify patterns and prevent emergencies before they happen, 
@@ -886,7 +1290,16 @@
                     </p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon">
+                        <!-- Analytics/Chart Icon -->
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                            <path d="M3 3v18h18" stroke="currentColor" stroke-width="2"/>
+                            <path d="M18.7 8l-2.1 2.1-4.2-4.2L9 9.3" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="7" cy="10" r="1" fill="currentColor"/>
+                            <circle cx="12" cy="5" r="1" fill="currentColor"/>
+                            <circle cx="16.6" cy="8.4" r="1" fill="currentColor"/>
+                        </svg>
+                    </div>
                     <h3 class="feature-title">Real-Time Analytics</h3>
                     <p class="feature-description">
                         Track performance, costs, and trends with comprehensive dashboards. 
@@ -903,46 +1316,51 @@
             <div class="section-header">
                 <h2 class="section-title">Calculate Your Savings</h2>
                 <p class="section-subtitle">
-                    See how much Demorai can save your property management company
+                    See how much Dimorai can save your property management company
                 </p>
             </div>
             <div class="calculator-wrapper">
-                <div class="input-grid">
-                    <div class="input-group">
-                        <label class="input-label" for="units">Number of Units Managed</label>
-                        <input type="number" id="units" class="input-field" value="1000" min="100">
+                <div class="calculator-form">
+                    <div class="input-grid">
+                        <div class="input-group">
+                            <label class="input-label" for="units">Number of Units Managed</label>
+                            <input type="number" id="units" class="input-field" value="1000" min="100">
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="avgRent">Average Monthly Rent ($)</label>
+                            <input type="number" id="avgRent" class="input-field" value="1500" min="500">
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="requests">Maintenance Requests/Unit/Month</label>
+                            <input type="number" id="requests" class="input-field" value="0.4" min="0.1" step="0.1">
+                        </div>
+                        <div class="input-group">
+                            <label class="input-label" for="coordinatorCost">Coordinator Annual Salary ($)</label>
+                            <input type="number" id="coordinatorCost" class="input-field" value="45000" min="30000">
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label class="input-label" for="avgRent">Average Monthly Rent ($)</label>
-                        <input type="number" id="avgRent" class="input-field" value="1500" min="500">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label" for="requests">Maintenance Requests/Unit/Month</label>
-                        <input type="number" id="requests" class="input-field" value="0.4" min="0.1" step="0.1">
-                    </div>
-                    <div class="input-group">
-                        <label class="input-label" for="coordinatorCost">Coordinator Annual Salary ($)</label>
-                        <input type="number" id="coordinatorCost" class="input-field" value="45000" min="30000">
-                    </div>
+                    <button class="calculate-btn" onclick="calculateROI()">Calculate Your ROI</button>
                 </div>
-                <button class="calculate-btn" onclick="calculateROI()">Calculate Your ROI</button>
-                <div class="results-grid" id="results">
-                    <div class="result-card">
-                        <div class="result-label">Monthly Time Saved</div>
-                        <div class="result-value" id="timeSaved">-</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">Annual Cost Savings</div>
-                        <div class="result-value" id="costSavings">-</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">Response Time</div>
-                        <div class="result-value" id="responseTime">-</div>
-                    </div>
-                    <div class="result-card">
-                        <div class="result-label">ROI Timeline</div>
-                        <div class="result-value" id="roiTimeline">-</div>
-                    </div>
+                <div class="calculator-image">
+                    <img src="roi-calculator-placeholder.png" alt="ROI Calculator Visualization" />
+                </div>
+            </div>
+            <div class="results-grid" id="results">
+                <div class="result-card">
+                    <div class="result-label">Monthly Time Saved</div>
+                    <div class="result-value" id="timeSaved">-</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-label">Annual Cost Savings</div>
+                    <div class="result-value" id="costSavings">-</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-label">Response Time</div>
+                    <div class="result-value" id="responseTime">-</div>
+                </div>
+                <div class="result-card">
+                    <div class="result-label">ROI Timeline</div>
+                    <div class="result-value" id="roiTimeline">-</div>
                 </div>
             </div>
         </div>
@@ -952,8 +1370,8 @@
     <section class="comparison-section" id="compare">
         <div class="section-container">
             <div class="section-header">
-                <h2 class="section-title" style="color: white;">Why Demorai Wins</h2>
-                <p class="section-subtitle" style="color: #94a3b8;">
+                <h2 class="section-title">Why Dimorai Wins</h2>
+                <p class="section-subtitle">
                     See how we compare to traditional approaches and competitors
                 </p>
             </div>
@@ -975,8 +1393,7 @@
                         <div class="solution-type">Vendor Network</div>
                     </div>
                     <div class="header-cell">
-                        <span class="recommended-badge">RECOMMENDED</span>
-                        <div class="solution-name">Demorai</div>
+                        <div class="solution-name">Dimorai</div>
                         <div class="solution-type">Complete AI Solution</div>
                     </div>
                 </div>
@@ -1039,19 +1456,256 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Mobile Comparison Layout -->
+            <div class="mobile-comparison">
+                <div class="mobile-solution-card">
+                    <div class="mobile-solution-header">
+                        <div class="solution-name">Property Meld</div>
+                        <div class="solution-type">Coordination Tool</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">24/7 AI Availability</div>
+                        <div class="mobile-feature-value"><span class="x">✗</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Omnichannel (Email/SMS/Phone/Chat)</div>
+                        <div class="mobile-feature-value"><span class="partial">◐</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Multi-language Support (50+)</div>
+                        <div class="mobile-feature-value"><span class="x">✗</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">AI-Powered Triage & Routing</div>
+                        <div class="mobile-feature-value"><span class="partial">◐</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Predictive Maintenance</div>
+                        <div class="mobile-feature-value"><span class="x">✗</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Response Time</div>
+                        <div class="mobile-feature-value">4+ min</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Starting Price</div>
+                        <div class="mobile-feature-value">$1.60/unit</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Time Savings</div>
+                        <div class="mobile-feature-value">60%</div>
+                    </div>
+                </div>
+                
+                <div class="mobile-solution-card">
+                    <div class="mobile-solution-header">
+                        <div class="solution-name">EliseAI</div>
+                        <div class="solution-type">AI Assistant</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">24/7 AI Availability</div>
+                        <div class="mobile-feature-value"><span class="check">✓</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Omnichannel (Email/SMS/Phone/Chat)</div>
+                        <div class="mobile-feature-value"><span class="check">✓</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Multi-language Support (50+)</div>
+                        <div class="mobile-feature-value"><span class="check">✓</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">AI-Powered Triage & Routing</div>
+                        <div class="mobile-feature-value"><span class="check">✓</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Predictive Maintenance</div>
+                        <div class="mobile-feature-value"><span class="x">✗</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Response Time</div>
+                        <div class="mobile-feature-value">< 1 min</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Starting Price</div>
+                        <div class="mobile-feature-value">~$1-2/unit</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Time Savings</div>
+                        <div class="mobile-feature-value">40%</div>
+                    </div>
+                </div>
+                
+                <div class="mobile-solution-card">
+                    <div class="mobile-solution-header">
+                        <div class="solution-name">Lula/Vendoroo</div>
+                        <div class="solution-type">Vendor Network</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">24/7 AI Availability</div>
+                        <div class="mobile-feature-value"><span class="partial">◐</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Omnichannel (Email/SMS/Phone/Chat)</div>
+                        <div class="mobile-feature-value"><span class="partial">◐</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Multi-language Support (50+)</div>
+                        <div class="mobile-feature-value"><span class="x">✗</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">AI-Powered Triage & Routing</div>
+                        <div class="mobile-feature-value"><span class="partial">◐</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Predictive Maintenance</div>
+                        <div class="mobile-feature-value"><span class="x">✗</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Response Time</div>
+                        <div class="mobile-feature-value">5-10 min</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Starting Price</div>
+                        <div class="mobile-feature-value">$3/unit</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Time Savings</div>
+                        <div class="mobile-feature-value">50%</div>
+                    </div>
+                </div>
+                
+                <div class="mobile-solution-card recommended">
+                    <div class="mobile-solution-header">
+                        <span class="recommended-badge">RECOMMENDED</span>
+                        <div class="solution-name">Dimorai</div>
+                        <div class="solution-type">Complete AI Solution</div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">24/7 AI Availability</div>
+                        <div class="mobile-feature-value"><span class="check">✓</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Omnichannel (Email/SMS/Phone/Chat)</div>
+                        <div class="mobile-feature-value"><span class="check">✓</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Multi-language Support (50+)</div>
+                        <div class="mobile-feature-value"><span class="check">✓</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">AI-Powered Triage & Routing</div>
+                        <div class="mobile-feature-value"><span class="check">✓</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Predictive Maintenance</div>
+                        <div class="mobile-feature-value"><span class="check">✓</span></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Response Time</div>
+                        <div class="mobile-feature-value"><strong>< 5 sec</strong></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Starting Price</div>
+                        <div class="mobile-feature-value"><strong>ROI-based</strong></div>
+                    </div>
+                    <div class="mobile-feature-row">
+                        <div class="mobile-feature-name">Time Savings</div>
+                        <div class="mobile-feature-value"><strong>60-70%</strong></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-content">
-            <h2 class="cta-title">Ready to Transform Your Operations?</h2>
-            <p class="cta-subtitle">
-                Join forward-thinking property managers saving 60% on coordination costs
-            </p>
-            <div class="cta-buttons">
-                <a href="#" class="cta-primary">Get Free ROI Analysis</a>
-                <a href="demo.html" class="cta-secondary">Watch 5-Min Demo</a>
+    <!-- Contact Form Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <div class="section-header">
+                <h2 class="section-title">Ready to Transform Your Operations?</h2>
+                <p class="section-subtitle">
+                    Get your free ROI analysis and see how much Dimorai can save your property management company
+                </p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-form-container">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" class="form-input" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company" class="form-label">Company Name</label>
+                                <input type="text" id="company" name="company" class="form-input">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="units" class="form-label">Number of Units Managed</label>
+                            <select id="unitsManaged" name="unitsManaged" class="form-input">
+                                <option value="">Select range</option>
+                                <option value="1-50">1-50 units</option>
+                                <option value="51-200">51-200 units</option>
+                                <option value="201-500">201-500 units</option>
+                                <option value="501-1000">501-1,000 units</option>
+                                <option value="1000+">1,000+ units</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">Tell us about your current challenges</label>
+                            <textarea id="message" name="message" class="form-input form-textarea" rows="4" placeholder="What maintenance coordination challenges are you facing?"></textarea>
+                        </div>
+                        <button type="submit" class="form-submit-btn" id="submitBtn">
+                            <span class="btn-text">Get My Free ROI Analysis</span>
+                            <span class="btn-loading" style="display: none;">Sending...</span>
+                        </button>
+                    </form>
+                    <div id="formMessage" class="form-message" style="display: none;"></div>
+                </div>
+                <div class="contact-benefits">
+                    <h3>What You'll Receive:</h3>
+                    <ul class="benefits-list">
+                        <li>
+                            <span class="benefit-icon">📊</span>
+                            <div>
+                                <strong>Custom ROI Analysis</strong>
+                                <p>Detailed breakdown of potential savings for your portfolio</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="benefit-icon">🎯</span>
+                            <div>
+                                <strong>Implementation Roadmap</strong>
+                                <p>Step-by-step plan tailored to your operation size</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="benefit-icon">🚀</span>
+                            <div>
+                                <strong>Live Demo Access</strong>
+                                <p>See Dimorai in action with your specific use cases</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="benefit-icon">💰</span>
+                            <div>
+                                <strong>No Commitment</strong>
+                                <p>Free analysis with no sales pressure</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -1062,10 +1716,10 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <div class="logo" style="color: white;">
-                        <div class="logo-icon">🤖</div>
-                        <span>Demorai</span>
+                        <div class="logo-icon">D</div>
+                        <span>Dimorai</span>
                     </div>
-                    <p style="color: #94a3b8; margin-top: 1rem;">
+                    <p style="color: #c4b5a0; margin-top: 1rem;">
                         AI-powered maintenance coordination that transforms property management operations.
                     </p>
                 </div>
@@ -1098,7 +1752,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Demorai. All rights reserved.</p>
+                <p>&copy; 2024 Dimorai. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1170,7 +1824,60 @@
                 }
             });
         });
+
+        // Contact Form Submission
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            const formMessage = document.getElementById('formMessage');
+            
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            
+            // Hide any previous messages
+            formMessage.style.display = 'none';
+            
+            // Collect form data
+            const formData = new FormData(this);
+            
+            try {
+                const response = await fetch('https://form-handler.your-domain.workers.dev', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok && result.success) {
+                    // Success
+                    formMessage.className = 'form-message success';
+                    formMessage.textContent = 'Thank you! We\'ll send your ROI analysis within 24 hours.';
+                    formMessage.style.display = 'block';
+                    
+                    // Reset form
+                    this.reset();
+                } else {
+                    // Error from server
+                    throw new Error(result.error || 'Failed to submit form');
+                }
+            } catch (error) {
+                // Network or other error
+                formMessage.className = 'form-message error';
+                formMessage.textContent = 'Sorry, there was an error submitting the form. Please try again.';
+                formMessage.style.display = 'block';
+                console.error('Form submission error:', error);
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+            }
+        });
     </script>
 </body>
 </html>
-                    
