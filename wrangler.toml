@@ -11,7 +11,7 @@ compatibility_date = "2024-01-01"
 [env.production]
 name = "dimorai-form-handler"
 routes = [
-  { pattern = "form-handler.your-domain.com/*", zone_name = "your-domain.com" }
+  { pattern = "form-handler.dimorai.com/*", zone_name = "dimorai.com" }
 ]
 
 # Development environment  

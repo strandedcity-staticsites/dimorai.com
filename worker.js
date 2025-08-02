@@ -208,8 +208,8 @@ IP: ${data.ip}
   `;
 
   const emailPayload = {
-    from: 'Dimorai Contact Form <noreply@your-domain.com>',
-    to: [env.NOTIFICATION_EMAIL || 'your-email@example.com'],
+    from: 'Dimorai Contact Form <noreply@dimorai.com>',
+    to: [env.NOTIFICATION_EMAIL || 'philrseaton@gmail.com'],
     subject: `🎯 New ROI Analysis Request from ${data.firstName} ${data.lastName} (${data.company})`,
     html: emailHtml,
     text: emailText,
