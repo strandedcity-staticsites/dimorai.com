@@ -3,6 +3,9 @@ name = "dimorai-form-handler"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
+[observability.logs]
+enabled = true
+
 # Environment variables (secrets will be added via CLI)
 [vars]
 # Add any non-secret environment variables here
