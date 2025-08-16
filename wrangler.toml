@@ -14,7 +14,7 @@ enabled = true
 [env.production]
 name = "hellojack-form-handler"
 routes = [
-  { pattern = "form-handler.hellojack.ai/*", zone_name = "hellojack.ai" }
+  { pattern = "form-handler.hellojack.ai/submit", zone_name = "hellojack.ai" }
 ]
 
 # Development environment  

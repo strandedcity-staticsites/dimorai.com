@@ -30,17 +30,17 @@ export default {
     }
 
     try {
-      // Parse form data
-      const formData = await request.formData();
+      // Parse JSON data
+      const jsonData = await request.json();
       
       // Extract form fields
       const data = {
-        firstName: formData.get('firstName')?.trim() || '',
-        lastName: formData.get('lastName')?.trim() || '',
-        email: formData.get('email')?.trim() || '',
-        company: formData.get('company')?.trim() || 'Not provided',
-        unitsManaged: formData.get('unitsManaged') || 'Not specified',
-        message: formData.get('message')?.trim() || 'No message provided',
+        firstName: jsonData.firstName?.trim() || '',
+        lastName: jsonData.lastName?.trim() || '',
+        email: jsonData.email?.trim() || '',
+        company: jsonData.company?.trim() || 'Not provided',
+        unitsManaged: jsonData.unitsManaged || 'Not specified',
+        message: jsonData.message?.trim() || 'No message provided',
         timestamp: new Date().toISOString(),
         userAgent: request.headers.get('User-Agent') || '',
         ip: request.headers.get('CF-Connecting-IP') || 'Unknown'
