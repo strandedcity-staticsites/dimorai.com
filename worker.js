@@ -6,7 +6,7 @@
 export default {
   async fetch(request, env, ctx) {
     // Only allow POST requests
-    if (request.method !== 'POST') {
+    if (request.method !== 'POST' && request.method !== 'OPTIONS' ) {
       return new Response('Method not allowed', { 
         status: 405,
         headers: {
