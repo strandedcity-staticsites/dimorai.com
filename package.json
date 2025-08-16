@@ -1,7 +1,7 @@
 {
-  "name": "dimorai-form-handler",
+  "name": "hellojack-form-handler",
   "version": "1.0.0",
-  "description": "Cloudflare Worker for handling Dimorai contact form submissions",
+  "description": "Cloudflare Worker for handling HelloJack contact form submissions",
   "main": "worker.js",
   "scripts": {
     "dev": "wrangler dev",
@@ -16,7 +16,7 @@
     "resend",
     "email-notifications"
   ],
-  "author": "Dimorai",
+  "author": "HelloJack",
   "license": "MIT",
   "devDependencies": {
     "wrangler": "^3.0.0"

@@ -1,4 +1,4 @@
-# Dimorai Contact Form Setup Guide
+# HelloJack Contact Form Setup Guide
 
 This guide will help you set up the complete contact form system using Cloudflare Workers and Resend API.
 
@@ -25,7 +25,7 @@ The system includes:
 2. Verify your email address
 3. Go to **API Keys** in the dashboard
 4. Click **Create API Key**
-5. Name it "Dimorai Contact Form" and copy the key (starts with `re_`)
+5. Name it "HelloJack Contact Form" and copy the key (starts with `re_`)
 
 ### 2. Set Up Cloudflare Worker
 
@@ -58,12 +58,12 @@ The system includes:
 ### 3. Configure Your Domain
 
 1. **Option A: Use Workers.dev subdomain (easiest)**
-   - Your form will submit to: `https://dimorai-form-handler.your-account.workers.dev`
+   - Your form will submit to: `https://hellojack-form-handler.your-account.workers.dev`
    - Update the fetch URL in `index.html` line 1849
 
 2. **Option B: Use custom domain (recommended)**
    - Edit `wrangler.toml` and replace `your-domain.com` with your actual domain
-   - Add a CNAME record: `form-handler` → `dimorai-form-handler.your-account.workers.dev`
+   - Add a CNAME record: `form-handler` → `hellojack-form-handler.your-account.workers.dev`
    - Your form will submit to: `https://form-handler.your-domain.com`
 
 ### 4. Deploy the Worker

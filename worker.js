@@ -1,5 +1,5 @@
 /**
- * Cloudflare Worker for handling Dimorai contact form submissions
+ * Cloudflare Worker for handling HelloJack contact form submissions
  * Sends email notifications via Resend API
  */
 
@@ -116,7 +116,7 @@ async function sendEmailNotification(data, env) {
     <html>
     <head>
       <meta charset="utf-8">
-      <title>New Dimorai Contact Form Submission</title>
+      <title>New HelloJack Contact Form Submission</title>
       <style>
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #333; }
         .container { max-width: 600px; margin: 0 auto; padding: 20px; }
@@ -133,7 +133,7 @@ async function sendEmailNotification(data, env) {
       <div class="container">
         <div class="header">
           <h1 style="margin: 0;">🎯 New ROI Analysis Request</h1>
-          <p style="margin: 5px 0 0 0; opacity: 0.9;">Someone wants to learn about Dimorai!</p>
+          <p style="margin: 5px 0 0 0; opacity: 0.9;">Someone wants to learn about HelloJack!</p>
         </div>
         
         <div class="content">
@@ -184,7 +184,7 @@ async function sendEmailNotification(data, env) {
           </div>
           
           <div class="footer">
-            <p>This email was generated automatically by your Dimorai contact form.</p>
+            <p>This email was generated automatically by your HelloJack contact form.</p>
           </div>
         </div>
       </div>
@@ -193,7 +193,7 @@ async function sendEmailNotification(data, env) {
   `;
 
   const emailText = `
-New Dimorai Contact Form Submission
+New HelloJack Contact Form Submission
 
 Contact: ${data.firstName} ${data.lastName}
 Email: ${data.email}
@@ -208,7 +208,7 @@ IP: ${data.ip}
   `;
 
   const emailPayload = {
-    from: 'Dimorai Contact Form <noreply@dimorai.com>',
+    from: 'HelloJack Contact Form <noreply@hellojack.ai>',
     to: [env.NOTIFICATION_EMAIL || 'philrseaton@gmail.com'],
     subject: `🎯 New ROI Analysis Request from ${data.firstName} ${data.lastName} (${data.company})`,
     html: emailHtml,

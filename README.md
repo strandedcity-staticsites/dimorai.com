@@ -1,6 +1,6 @@
-# Dimorai - AI-Powered Property Maintenance Coordination
+# HelloJack - AI-Powered Property Maintenance Coordination
 
-Welcome to the Dimorai website and contact form system! This repository contains everything you need to deploy a professional property management landing page with integrated lead capture and email notifications.
+Welcome to the HelloJack website and contact form system! This repository contains everything you need to deploy a professional property management landing page with integrated lead capture and email notifications.
 
 ## 🚀 Quick Start
 
@@ -14,9 +14,9 @@ This is a complete website solution featuring:
 ## 📋 Project Structure
 
 ```
-dimorai/
+hellojack/
 ├── index.html                 # Main website file
-├── dimorai-header.png         # Hero section image
+├── hellojack-header.png         # Hero section image
 ├── roi-calculator-placeholder.png  # ROI calculator placeholder
 ├── worker.js                  # Cloudflare Worker for form handling
 ├── wrangler.toml             # Worker deployment configuration
@@ -119,7 +119,7 @@ Follow the [Form Setup Guide](README-FORM-SETUP.md) to:
 1. **Clone this repository**
    ```bash
    git clone <your-repo-url>
-   cd dimorai
+   cd hellojack
    ```
 
 2. **Choose your deployment path**:
@@ -226,7 +226,7 @@ The system automatically scores leads based on:
 - 🌐 **[GitHub Pages Guide](README-GH-PAGES.md)** - Deploy website with Cloudflare CDN
 - 🛠️ **[Cloudflare Dashboard](https://dash.cloudflare.com)** - Manage CDN and Workers
 - 📧 **[Resend Dashboard](https://resend.com/dashboard)** - Monitor email delivery
-- 📊 **[GitHub Pages Status](https://github.com/yourusername/dimorai/deployments)** - Check deployment status
+- 📊 **[GitHub Pages Status](https://github.com/yourusername/hellojack/deployments)** - Check deployment status
 
 ---
 

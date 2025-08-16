@@ -1,5 +1,5 @@
-# Cloudflare Worker configuration for Demorai contact form handler
-name = "dimorai-form-handler"
+# Cloudflare Worker configuration for HelloJack contact form handler
+name = "hellojack-form-handler"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
@@ -12,14 +12,14 @@ enabled = true
 
 # Production environment
 [env.production]
-name = "dimorai-form-handler"
+name = "hellojack-form-handler"
 routes = [
-  { pattern = "form-handler.dimorai.com/*", zone_name = "dimorai.com" }
+  { pattern = "form-handler.hellojack.ai/*", zone_name = "hellojack.ai" }
 ]
 
 # Development environment  
 [env.development]
-name = "dimorai-form-handler-dev"
+name = "hellojack-form-handler-dev"
 
 # Required secrets (set these via: wrangler secret put VARIABLE_NAME)
 # RESEND_API_KEY - Your Resend API key

@@ -1,6 +1,6 @@
 # GitHub Pages + Cloudflare CDN Setup Guide
 
-This guide shows how to host your Dimorai website using GitHub Pages with a private repository and Cloudflare CDN for performance, security, and custom domain management.
+This guide shows how to host your HelloJack website using GitHub Pages with a private repository and Cloudflare CDN for performance, security, and custom domain management.
 
 ## 🎯 Overview
 
@@ -27,10 +27,10 @@ This guide shows how to host your Dimorai website using GitHub Pages with a priv
 # Initialize your project (if not already done)
 git init
 git add .
-git commit -m "Initial Dimorai website"
+git commit -m "Initial HelloJack website"
 
 # Create private repo on GitHub, then:
-git remote add origin https://github.com/yourusername/dimorai.git
+git remote add origin https://github.com/yourusername/hellojack.git
 git branch -M main
 git push -u origin main
 ```
@@ -129,10 +129,10 @@ const response = await fetch('https://form-handler.yourdomain.com', {
 Ensure all image references use relative paths:
 ```html
 <!-- Good -->
-<img src="dimorai-header.png" alt="Dimorai Platform" />
+<img src="hellojack-header.png" alt="HelloJack Platform" />
 
 <!-- Avoid absolute paths -->
-<img src="/images/dimorai-header.png" alt="Dimorai Platform" />
+<img src="/images/hellojack-header.png" alt="HelloJack Platform" />
 ```
 
 ## 🚦 Step 6: Deploy and Test
@@ -157,7 +157,7 @@ git push origin main
 - View traffic, performance, and security metrics
 
 ### GitHub Pages Status
-- Monitor deployments at: `https://github.com/yourusername/dimorai/deployments`
+- Monitor deployments at: `https://github.com/yourusername/hellojack/deployments`
 
 ### Google Analytics (Optional)
 Add to your `index.html` before closing `</head>`:
@@ -255,4 +255,4 @@ If changes don't appear immediately:
 - [GitHub Pages IP Addresses](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)
 - [Cloudflare Page Rules Guide](https://support.cloudflare.com/hc/en-us/articles/218411427)
 
-Your Dimorai website is now powered by a professional, scalable, and secure hosting setup! 🚀
+Your HelloJack website is now powered by a professional, scalable, and secure hosting setup! 🚀
