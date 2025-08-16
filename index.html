@@ -71,7 +71,6 @@
         }
         
         .logo-icon {
-            width: 40px;
             height: 40px;
             display: flex;
             align-items: center;
@@ -79,8 +78,8 @@
         }
         
         .logo-icon img {
-            width: 100%;
             height: 100%;
+            width: auto;
             object-fit: contain;
         }
         
@@ -515,7 +514,7 @@
         
         .table-header {
             display: grid;
-            grid-template-columns: 2fr repeat(4, 1fr);
+            grid-template-columns: 2fr repeat(3, 1fr);
             background: var(--soft-gray);
             border-bottom: 1px solid #e2e8f0;
         }
@@ -566,7 +565,7 @@
         
         .table-row {
             display: grid;
-            grid-template-columns: 2fr repeat(4, 1fr);
+            grid-template-columns: 2fr repeat(3, 1fr);
             border-bottom: 1px solid #e2e8f0;
         }
         
@@ -1059,6 +1058,10 @@
             }
         }
     </style>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/hellojack_wordmark.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/hellojack_wordmark.png">
+    <link rel="apple-touch-icon" href="images/hellojack_wordmark.png">
 </head>
 <body>
     <!-- Header -->
@@ -1066,9 +1069,8 @@
         <div class="nav-container">
             <a href="#" class="logo">
                 <div class="logo-icon">
-                    <img src="lettermark.svg" alt="HelloJack" />
+                    <img src="images/hellojack_wordmark.png" alt="HelloJack" />
                 </div>
-                <span>HelloJack</span>
             </a>
             <nav>
                 <ul class="nav-menu">
@@ -1086,7 +1088,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-image-header">
-            <img src="hellojack_logo_combined.svg" alt="HelloJack AI-Powered Property Management Platform" />
+            <img src="images/hero_v1.png" alt="HelloJack AI-Powered Property Management Platform" />
         </div>
         <div class="hero-content-section">
             <div class="hero-container">
@@ -1405,10 +1407,6 @@
                         <div class="solution-type">Coordination Tool</div>
                     </div>
                     <div class="header-cell">
-                        <div class="solution-name">EliseAI</div>
-                        <div class="solution-type">AI Assistant</div>
-                    </div>
-                    <div class="header-cell">
                         <div class="solution-name">Lula/Vendoroo</div>
                         <div class="solution-type">Vendor Network</div>
                     </div>
@@ -1421,28 +1419,24 @@
                     <div class="table-row">
                         <div class="table-cell">24/7 AI Availability</div>
                         <div class="table-cell"><span class="x">✗</span></div>
-                        <div class="table-cell"><span class="check">✓</span></div>
                         <div class="table-cell"><span class="partial">◐</span></div>
                         <div class="table-cell"><span class="check">✓</span></div>
                     </div>
                     <div class="table-row">
                         <div class="table-cell">Omnichannel (Email/SMS/Phone/Chat)</div>
                         <div class="table-cell"><span class="partial">◐</span></div>
-                        <div class="table-cell"><span class="check">✓</span></div>
                         <div class="table-cell"><span class="partial">◐</span></div>
                         <div class="table-cell"><span class="check">✓</span></div>
                     </div>
                     <div class="table-row">
                         <div class="table-cell">Multi-language Support (50+)</div>
                         <div class="table-cell"><span class="x">✗</span></div>
-                        <div class="table-cell"><span class="check">✓</span></div>
                         <div class="table-cell"><span class="x">✗</span></div>
                         <div class="table-cell"><span class="check">✓</span></div>
                     </div>
                     <div class="table-row">
                         <div class="table-cell">AI-Powered Triage & Routing</div>
                         <div class="table-cell"><span class="partial">◐</span></div>
-                        <div class="table-cell"><span class="check">✓</span></div>
                         <div class="table-cell"><span class="partial">◐</span></div>
                         <div class="table-cell"><span class="check">✓</span></div>
                     </div>
@@ -1450,27 +1444,23 @@
                         <div class="table-cell">Predictive Maintenance</div>
                         <div class="table-cell"><span class="x">✗</span></div>
                         <div class="table-cell"><span class="x">✗</span></div>
-                        <div class="table-cell"><span class="x">✗</span></div>
                         <div class="table-cell"><span class="check">✓</span></div>
                     </div>
                     <div class="table-row">
                         <div class="table-cell">Response Time</div>
                         <div class="table-cell">4+ min</div>
-                        <div class="table-cell">< 1 min</div>
                         <div class="table-cell">5-10 min</div>
                         <div class="table-cell"><strong>< 5 sec</strong></div>
                     </div>
                     <div class="table-row">
                         <div class="table-cell">Starting Price</div>
                         <div class="table-cell">$1.60/unit</div>
-                        <div class="table-cell">~$1-2/unit</div>
                         <div class="table-cell">$3/unit</div>
                         <div class="table-cell"><strong>ROI-based</strong></div>
                     </div>
                     <div class="table-row">
                         <div class="table-cell">Time Savings</div>
                         <div class="table-cell">60%</div>
-                        <div class="table-cell">40%</div>
                         <div class="table-cell">50%</div>
                         <div class="table-cell"><strong>60-70%</strong></div>
                     </div>
@@ -1515,45 +1505,6 @@
                     <div class="mobile-feature-row">
                         <div class="mobile-feature-name">Time Savings</div>
                         <div class="mobile-feature-value">60%</div>
-                    </div>
-                </div>
-                
-                <div class="mobile-solution-card">
-                    <div class="mobile-solution-header">
-                        <div class="solution-name">EliseAI</div>
-                        <div class="solution-type">AI Assistant</div>
-                    </div>
-                    <div class="mobile-feature-row">
-                        <div class="mobile-feature-name">24/7 AI Availability</div>
-                        <div class="mobile-feature-value"><span class="check">✓</span></div>
-                    </div>
-                    <div class="mobile-feature-row">
-                        <div class="mobile-feature-name">Omnichannel (Email/SMS/Phone/Chat)</div>
-                        <div class="mobile-feature-value"><span class="check">✓</span></div>
-                    </div>
-                    <div class="mobile-feature-row">
-                        <div class="mobile-feature-name">Multi-language Support (50+)</div>
-                        <div class="mobile-feature-value"><span class="check">✓</span></div>
-                    </div>
-                    <div class="mobile-feature-row">
-                        <div class="mobile-feature-name">AI-Powered Triage & Routing</div>
-                        <div class="mobile-feature-value"><span class="check">✓</span></div>
-                    </div>
-                    <div class="mobile-feature-row">
-                        <div class="mobile-feature-name">Predictive Maintenance</div>
-                        <div class="mobile-feature-value"><span class="x">✗</span></div>
-                    </div>
-                    <div class="mobile-feature-row">
-                        <div class="mobile-feature-name">Response Time</div>
-                        <div class="mobile-feature-value">< 1 min</div>
-                    </div>
-                    <div class="mobile-feature-row">
-                        <div class="mobile-feature-name">Starting Price</div>
-                        <div class="mobile-feature-value">~$1-2/unit</div>
-                    </div>
-                    <div class="mobile-feature-row">
-                        <div class="mobile-feature-name">Time Savings</div>
-                        <div class="mobile-feature-value">40%</div>
                     </div>
                 </div>
                 
@@ -1868,7 +1819,7 @@
             const formData = new FormData(this);
             
             try {
-                const response = await fetch('https://form-handler.hellojack.com', {
+                const response = await fetch('https://form-handler.hellojack.com/submit', {
                     method: 'POST',
                     body: formData
                 });

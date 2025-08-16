@@ -64,16 +64,16 @@
         }
         
         .logo-icon {
-            width: 40px;
             height: 40px;
-            background: var(--primary-blue);
-            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: 600;
+        }
+        
+        .logo-icon img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
         }
         
         .nav-button {
@@ -535,14 +535,19 @@
             }
         }
     </style>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/hellojack_wordmark.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/hellojack_wordmark.png">
+    <link rel="apple-touch-icon" href="images/hellojack_wordmark.png">
 </head>
 <body>
     <!-- Header -->
     <header class="header">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon">D</div>
-                <span>HelloJack</span>
+                <div class="logo-icon">
+                    <img src="images/hellojack_wordmark.png" alt="HelloJack" />
+                </div>
             </a>
             <a href="index.html" class="nav-button">Back to Home</a>
         </div>

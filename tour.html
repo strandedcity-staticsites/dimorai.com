@@ -44,13 +44,9 @@
         }
         
         .logo-icon {
-            width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: auto;
+            object-fit: contain;
         }
         
         .nav-section {
@@ -453,13 +449,17 @@
             }
         }
     </style>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/hellojack_wordmark.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/hellojack_wordmark.png">
+    <link rel="apple-touch-icon" href="images/hellojack_wordmark.png">
 </head>
 <body>
     <div class="interface-container">
         <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">
-                <div class="logo-icon">🤖</div>
+                <img src="images/hellojack_wordmark.png" alt="HelloJack" class="logo-icon" />
                 <span>AI Workflow</span>
             </div>
             
