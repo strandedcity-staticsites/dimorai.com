@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demorai - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .interface-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #0f172a;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-section {
+            margin-bottom: 30px;
+        }
+        
+        .nav-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-item {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-item.active {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+        
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .nav-badge {
+            margin-left: auto;
+            background: #ef4444;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            position: relative;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 10px 16px 10px 40px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+        
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .notification-bell {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .notification-dot {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 8px;
+            height: 8px;
+            background: #ef4444;
+            border-radius: 50%;
+        }
+        
+        /* Dashboard Content */
+        .dashboard-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+        
+        .dashboard-header {
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .dashboard-subtitle {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-label {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-change {
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .stat-change.positive {
+            color: #10b981;
+        }
+        
+        .stat-change.negative {
+            color: #ef4444;
+        }
+        
+        /* Active Requests */
+        .section-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .view-all-btn {
+            color: #3b82f6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        /* Request List */
+        .request-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .request-item {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 200px 200px 150px 120px;
+            gap: 20px;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        
+        .request-item:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transform: translateY(-1px);
+        }
+        
+        .request-main {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .request-id {
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .request-issue {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .request-tenant {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tenant-avatar {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .tenant-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .tenant-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .tenant-unit {
+            color: #94a3b8;
+            font-size: 0.85rem;
+        }
+        
+        .request-status {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-align: center;
+        }
+        
+        .status-new {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        
+        .status-assigned {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .status-progress {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+        
+        .status-completed {
+            background: #d1fae5;
+            color: #059669;
+        }
+        
+        .request-time {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        .request-ai {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #3b82f6;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .ai-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* AI Assistant Panel */
+        .ai-panel {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 350px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .ai-panel-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .ai-panel-title {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ai-status {
+            width: 10px;
+            height: 10px;
+            background: #10b981;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        .ai-panel-content {
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .ai-message {
+            background: #f1f5f9;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .ai-suggestion {
+            background: #dbeafe;
+            border-left: 3px solid #3b82f6;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .request-item {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="interface-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">🤖</div>
+                <span>AI Workflow</span>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Main</div>
+                <a href="dashboard.html" class="nav-item active">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="maintenance.html" class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span>Maintenance</span>
+                    <span class="nav-badge">12</span>
+                </a>
+                <a href="vendors.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span>Vendors</span>
+                </a>
+                <a href="properties.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span>Properties</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Analytics</div>
+                <a href="performance.html" class="nav-item">
+                    <span class="nav-icon">📈</span>
+                    <span>Performance</span>
+                </a>
+                <a href="costs.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span>Cost Analysis</span>
+                </a>
+                <a href="response-times.html" class="nav-item">
+                    <span class="nav-icon">⏱️</span>
+                    <span>Response Times</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Settings</div>
+                <a href="integrations.html" class="nav-item">
+                    <span class="nav-icon">🔌</span>
+                    <span>Integrations</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Preferences</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <div class="search-bar">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" class="search-input" placeholder="Search requests, tenants, or properties...">
+                </div>
+                
+                <div class="header-actions">
+                    <div class="notification-bell">
+                        <span>🔔</span>
+                        <div class="notification-dot"></div>
+                    </div>
+                    <div class="user-profile">
+                        <div class="tenant-avatar">JD</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <div class="dashboard-header">
+                    <h1 class="dashboard-title">Maintenance Dashboard</h1>
+                    <p class="dashboard-subtitle">Real-time overview of all maintenance operations</p>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-label">Active Requests</div>
+                        <div class="stat-value">47</div>
+                        <div class="stat-change positive">
+                            <span>↓</span> 12% from last week
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-label">Avg Response Time</div>
+                        <div class="stat-value">4.2 min</div>
+                        <div class="stat-change positive">
+                            <span>↓</span> 89% improvement
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-label">Completion Rate</div>
+                        <div class="stat-value">94%</div>
+                        <div class="stat-change positive">
+                            <span>↑</span> 8% this month
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-label">Cost Savings</div>
+                        <div class="stat-value">$18.5k</div>
+                        <div class="stat-change positive">
+                            <span>↑</span> This month
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Active Requests -->
+                <div class="section-card">
+                    <div class="section-header">
+                        <h2 class="section-title">Active Maintenance Requests</h2>
+                        <a href="#" class="view-all-btn">View All →</a>
+                    </div>
+                    
+                    <div class="request-list">
+                        <div class="request-item">
+                            <div class="request-main">
+                                <span class="request-id">#MR-2451</span>
+                                <span class="request-issue">AC not cooling - urgent</span>
+                            </div>
+                            <div class="request-tenant">
+                                <div class="tenant-avatar">MS</div>
+                                <div class="tenant-info">
+                                    <span class="tenant-name">Maria Santos</span>
+                                    <span class="tenant-unit">Unit 204-B</span>
+                                </div>
+                            </div>
+                            <div class="request-status status-progress">In Progress</div>
+                            <div class="request-time">12 min ago</div>
+                            <div class="request-ai">
+                                <span class="ai-dot"></span>
+                                AI Coordinating
+                            </div>
+                        </div>
+                        
+                        <div class="request-item">
+                            <div class="request-main">
+                                <span class="request-id">#MR-2450</span>
+                                <span class="request-issue">Kitchen sink leak</span>
+                            </div>
+                            <div class="request-tenant">
+                                <div class="tenant-avatar">JW</div>
+                                <div class="tenant-info">
+                                    <span class="tenant-name">John Wilson</span>
+                                    <span class="tenant-unit">Unit 512-A</span>
+                                </div>
+                            </div>
+                            <div class="request-status status-assigned">Vendor Assigned</div>
+                            <div class="request-time">45 min ago</div>
+                            <div class="request-ai">
+                                <span class="ai-dot"></span>
+                                AI Scheduled
+                            </div>
+                        </div>
+                        
+                        <div class="request-item">
+                            <div class="request-main">
+                                <span class="request-id">#MR-2449</span>
+                                <span class="request-issue">Bathroom door stuck</span>
+                            </div>
+                            <div class="request-tenant">
+                                <div class="tenant-avatar">LC</div>
+                                <div class="tenant-info">
+                                    <span class="tenant-name">Lisa Chen</span>
+                                    <span class="tenant-unit">Unit 315-C</span>
+                                </div>
+                            </div>
+                            <div class="request-status status-new">New Request</div>
+                            <div class="request-time">2 min ago</div>
+                            <div class="request-ai">
+                                <span class="ai-dot"></span>
+                                AI Processing
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI Assistant Panel -->
+        <div class="ai-panel">
+            <div class="ai-panel-header">
+                <div class="ai-panel-title">
+                    <span class="ai-status"></span>
+                    AI Assistant Active
+                </div>
+                <span>✕</span>
+            </div>
+            <div class="ai-panel-content">
+                <div class="ai-message">
+                    🎯 Just scheduled HVAC Pro for Unit 204-B. Technician Mike will arrive at 2:30 PM. Tenant has been notified via SMS.
+                </div>
+                <div class="ai-suggestion">
+                    💡 Suggestion: Based on 3 AC issues today, consider scheduling preventive maintenance for Building 2.
+                </div>
+                <div class="ai-message">
+                    ✅ Completed vendor matching for #MR-2450. Best match: PlumbRight (4.8★, $85/hr, available now)
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

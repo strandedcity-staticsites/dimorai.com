@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demorai - Maintenance</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .interface-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #0f172a;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-section {
+            margin-bottom: 30px;
+        }
+        
+        .nav-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-item {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-item.active {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+        
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .nav-badge {
+            margin-left: auto;
+            background: #ef4444;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .action-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Content */
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+        
+        /* Filters */
+        .filters-section {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .filter-label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        
+        .filter-select {
+            padding: 8px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            font-size: 0.95rem;
+        }
+        
+        /* Maintenance Table */
+        .table-container {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .table-header {
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .table-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .table-info {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th {
+            text-align: left;
+            padding: 15px 20px;
+            background: #f8fafc;
+            font-weight: 600;
+            color: #64748b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        td {
+            padding: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        
+        tr:hover {
+            background: #f8fafc;
+        }
+        
+        /* Status Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .status-new {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        
+        .status-in-progress {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+        
+        .status-scheduled {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        
+        .status-completed {
+            background: #d1fae5;
+            color: #059669;
+        }
+        
+        /* Priority Badges */
+        .priority-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+        }
+        
+        .priority-urgent {
+            color: #ef4444;
+        }
+        
+        .priority-high {
+            color: #f59e0b;
+        }
+        
+        .priority-medium {
+            color: #3b82f6;
+        }
+        
+        .priority-low {
+            color: #10b981;
+        }
+        
+        /* AI Status */
+        .ai-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #3b82f6;
+            font-size: 0.85rem;
+        }
+        
+        .ai-dot {
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        /* Actions */
+        .table-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            padding: 6px 12px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            background: white;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .action-btn:hover {
+            background: #f8fafc;
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+        
+        /* AI Assistant Panel */
+        .ai-panel {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 350px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e2e8f0;
+            overflow: hidden;
+        }
+        
+        .ai-panel-header {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .ai-panel-title {
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .ai-panel-content {
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .ai-message {
+            background: #f1f5f9;
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .ai-suggestion {
+            background: #dbeafe;
+            border-left: 3px solid #3b82f6;
+            padding: 12px 16px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 10px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="interface-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">🤖</div>
+                <span>Demorai</span>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Main</div>
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="maintenance.html" class="nav-item active">
+                    <span class="nav-icon">🔧</span>
+                    <span>Maintenance</span>
+                    <span class="nav-badge">12</span>
+                </a>
+                <a href="vendors.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span>Vendors</span>
+                </a>
+                <a href="properties.html" class="nav-item">
+                    <span class="nav-icon">🏠</span>
+                    <span>Properties</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Analytics</div>
+                <a href="performance.html" class="nav-item">
+                    <span class="nav-icon">📈</span>
+                    <span>Performance</span>
+                </a>
+                <a href="costs.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span>Cost Analysis</span>
+                </a>
+                <a href="response-times.html" class="nav-item">
+                    <span class="nav-icon">⏱️</span>
+                    <span>Response Times</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Settings</div>
+                <a href="integrations.html" class="nav-item">
+                    <span class="nav-icon">🔌</span>
+                    <span>Integrations</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Preferences</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="page-title">Maintenance Requests</h1>
+                <div class="header-actions">
+                    <button class="action-button">+ New Request</button>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="content">
+                <!-- Filters -->
+                <div class="filters-section">
+                    <div class="filter-group">
+                        <label class="filter-label">Status</label>
+                        <select class="filter-select">
+                            <option>All Status</option>
+                            <option>New</option>
+                            <option>In Progress</option>
+                            <option>Scheduled</option>
+                            <option>Completed</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Priority</label>
+                        <select class="filter-select">
+                            <option>All Priorities</option>
+                            <option>Urgent</option>
+                            <option>High</option>
+                            <option>Medium</option>
+                            <option>Low</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Property</label>
+                        <select class="filter-select">
+                            <option>All Properties</option>
+                            <option>Sunset Apartments</option>
+                            <option>River View Complex</option>
+                            <option>Downtown Towers</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Date Range</label>
+                        <select class="filter-select">
+                            <option>Last 7 Days</option>
+                            <option>Last 30 Days</option>
+                            <option>Last 90 Days</option>
+                            <option>Custom Range</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Table -->
+                <div class="table-container">
+                    <div class="table-header">
+                        <h2 class="table-title">Active Requests</h2>
+                        <span class="table-info">47 total, 12 require attention</span>
+                    </div>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Request ID</th>
+                                <th>Issue</th>
+                                <th>Property</th>
+                                <th>Tenant</th>
+                                <th>Priority</th>
+                                <th>Status</th>
+                                <th>AI Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>#MR-2451</strong></td>
+                                <td>AC not cooling - urgent</td>
+                                <td>Sunset Apartments 204-B</td>
+                                <td>Maria Santos</td>
+                                <td><span class="priority-badge priority-urgent">🔴 Urgent</span></td>
+                                <td><span class="status-badge status-in-progress">In Progress</span></td>
+                                <td><span class="ai-status"><span class="ai-dot"></span>AI Coordinating</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn">View</button>
+                                        <button class="action-btn">Update</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>#MR-2450</strong></td>
+                                <td>Kitchen sink leak</td>
+                                <td>River View 512-A</td>
+                                <td>John Wilson</td>
+                                <td><span class="priority-badge priority-high">🟠 High</span></td>
+                                <td><span class="status-badge status-scheduled">Scheduled</span></td>
+                                <td><span class="ai-status"><span class="ai-dot"></span>Vendor Assigned</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn">View</button>
+                                        <button class="action-btn">Update</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>#MR-2449</strong></td>
+                                <td>Bathroom door stuck</td>
+                                <td>Downtown Towers 315-C</td>
+                                <td>Lisa Chen</td>
+                                <td><span class="priority-badge priority-medium">🔵 Medium</span></td>
+                                <td><span class="status-badge status-new">New</span></td>
+                                <td><span class="ai-status"><span class="ai-dot"></span>Processing</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn">View</button>
+                                        <button class="action-btn">Update</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>#MR-2448</strong></td>
+                                <td>Dishwasher not draining</td>
+                                <td>Sunset Apartments 108-A</td>
+                                <td>Robert Davis</td>
+                                <td><span class="priority-badge priority-medium">🔵 Medium</span></td>
+                                <td><span class="status-badge status-scheduled">Scheduled</span></td>
+                                <td><span class="ai-status"><span class="ai-dot"></span>Vendor Confirmed</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn">View</button>
+                                        <button class="action-btn">Update</button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><strong>#MR-2447</strong></td>
+                                <td>Bedroom window won't close</td>
+                                <td>River View 203-B</td>
+                                <td>Sarah Johnson</td>
+                                <td><span class="priority-badge priority-low">🟢 Low</span></td>
+                                <td><span class="status-badge status-completed">Completed</span></td>
+                                <td><span class="ai-status">✓ Resolved</span></td>
+                                <td>
+                                    <div class="table-actions">
+                                        <button class="action-btn">View</button>
+                                        <button class="action-btn">Invoice</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI Assistant Panel -->
+        <div class="ai-panel">
+            <div class="ai-panel-header">
+                <div class="ai-panel-title">
+                    <span class="ai-dot"></span>
+                    AI Assistant Active
+                </div>
+                <span>✕</span>
+            </div>
+            <div class="ai-panel-content">
+                <div class="ai-message">
+                    🔧 Currently coordinating 3 urgent repairs. HVAC Pro confirmed for Unit 204-B at 2:30 PM.
+                </div>
+                <div class="ai-suggestion">
+                    💡 Tip: 4 AC issues today in Sunset Apartments. Consider scheduling building-wide HVAC maintenance.
+                </div>
+                <div class="ai-message">
+                    📊 This week: 32 requests resolved, average response time 3.8 minutes, 96% tenant satisfaction.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

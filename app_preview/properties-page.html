@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demorai - Properties</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+        
+        .interface-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            height: 100vh;
+            display: flex;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: #0f172a;
+            color: white;
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .nav-section {
+            margin-bottom: 30px;
+        }
+        
+        .nav-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: #64748b;
+            margin-bottom: 15px;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-item {
+            padding: 12px 16px;
+            border-radius: 8px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        .nav-item.active {
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+        
+        .nav-icon {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .nav-badge {
+            margin-left: auto;
+            background: #ef4444;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 20px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .action-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .action-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+        }
+        
+        /* Content */
+        .content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+            background: #f8fafc;
+        }
+        
+        /* View Toggle */
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .view-btn {
+            padding: 8px 16px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .view-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+        
+        /* Property Grid */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+        }
+        
+        .property-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .property-image {
+            height: 200px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+        
+        .property-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .badge-residential {
+            color: #3b82f6;
+        }
+        
+        .badge-commercial {
+            color: #10b981;
+        }
+        
+        .property-content {
+            padding: 25px;
+        }
+        
+        .property-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+        
+        .property-address {
+            color: #64748b;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .property-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+        
+        .property-metrics {
+            padding: 15px 0;
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .metric-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        .metric-icon {
+            width: 20px;
+            height: 20px;
+            background: #eff6ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+        
+        .property-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .property-btn {
+            flex: 1;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn-primary {
+            background: #3b82f6;
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8fafc;
+        }
+        
+        /* Performance Indicators */
+        .performance-good {
+            color: #10b981;
+        }
+        
+        .performance-warning {
+            color: #f59e0b;
+        }
+        
+        .performance-bad {
+            color: #ef4444;
+        }
+    </style>
+</head>
+<body>
+    <div class="interface-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">🤖</div>
+                <span>Demorai</span>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Main</div>
+                <a href="dashboard.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="maintenance.html" class="nav-item">
+                    <span class="nav-icon">🔧</span>
+                    <span>Maintenance</span>
+                    <span class="nav-badge">12</span>
+                </a>
+                <a href="vendors.html" class="nav-item">
+                    <span class="nav-icon">👥</span>
+                    <span>Vendors</span>
+                </a>
+                <a href="properties.html" class="nav-item active">
+                    <span class="nav-icon">🏠</span>
+                    <span>Properties</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Analytics</div>
+                <a href="performance.html" class="nav-item">
+                    <span class="nav-icon">📈</span>
+                    <span>Performance</span>
+                </a>
+                <a href="costs.html" class="nav-item">
+                    <span class="nav-icon">💰</span>
+                    <span>Cost Analysis</span>
+                </a>
+                <a href="response-times.html" class="nav-item">
+                    <span class="nav-icon">⏱️</span>
+                    <span>Response Times</span>
+                </a>
+            </div>
+            
+            <div class="nav-section">
+                <div class="nav-title">Settings</div>
+                <a href="integrations.html" class="nav-item">
+                    <span class="nav-icon">🔌</span>
+                    <span>Integrations</span>
+                </a>
+                <a href="settings.html" class="nav-item">
+                    <span class="nav-icon">⚙️</span>
+                    <span>Preferences</span>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="page-title">Properties</h1>
+                <div class="header-actions">
+                    <button class="action-button">+ Add Property</button>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="content">
+                <!-- View Toggle -->
+                <div class="view-toggle">
+                    <button class="view-btn active">Grid View</button>
+                    <button class="view-btn">List View</button>
+                    <button class="view-btn">Map View</button>
+                </div>
+                
+                <!-- Property Grid -->
+                <div class="property-grid">
+                    <div class="property-card">
+                        <div class="property-image">
+                            🏢
+                            <span class="property-badge badge-residential">Residential</span>
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-name">Sunset Apartments</h3>
+                            <p class="property-address">
+                                <span>📍</span> 1234 Sunset Blvd, Oakland, CA 94607
+                            </p>
+                            
+                            <div class="property-stats">
+                                <div class="stat">
+                                    <div class="stat-value">124</div>
+                                    <div class="stat-label">Units</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">95%</div>
+                                    <div class="stat-label">Occupancy</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">4.2</div>
+                                    <div class="stat-label">Rating</div>
+                                </div>
+                            </div>
+                            
+                            <div class="property-metrics">
+                                <div class="metric-item performance-good">
+                                    <div class="metric-icon">⚡</div>
+                                    <span>3.5m avg response</span>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon">🔧</div>
+                                    <span>18 active requests</span>
+                                </div>
+                            </div>
+                            
+                            <div class="property-actions">
+                                <button class="property-btn btn-primary">View Details</button>
+                                <button class="property-btn btn-secondary">Reports</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="property-card">
+                        <div class="property-image">
+                            🏘️
+                            <span class="property-badge badge-residential">Residential</span>
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-name">River View Complex</h3>
+                            <p class="property-address">
+                                <span>📍</span> 567 River Road, Berkeley, CA 94702
+                            </p>
+                            
+                            <div class="property-stats">
+                                <div class="stat">
+                                    <div class="stat-value">86</div>
+                                    <div class="stat-label">Units</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">92%</div>
+                                    <div class="stat-label">Occupancy</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">4.5</div>
+                                    <div class="stat-label">Rating</div>
+                                </div>
+                            </div>
+                            
+                            <div class="property-metrics">
+                                <div class="metric-item performance-good">
+                                    <div class="metric-icon">⚡</div>
+                                    <span>2.8m avg response</span>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon">🔧</div>
+                                    <span>12 active requests</span>
+                                </div>
+                            </div>
+                            
+                            <div class="property-actions">
+                                <button class="property-btn btn-primary">View Details</button>
+                                <button class="property-btn btn-secondary">Reports</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="property-card">
+                        <div class="property-image">
+                            🏙️
+                            <span class="property-badge badge-commercial">Commercial</span>
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-name">Downtown Towers</h3>
+                            <p class="property-address">
+                                <span>📍</span> 890 Market St, San Francisco, CA 94103
+                            </p>
+                            
+                            <div class="property-stats">
+                                <div class="stat">
+                                    <div class="stat-value">156</div>
+                                    <div class="stat-label">Units</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">98%</div>
+                                    <div class="stat-label">Occupancy</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">4.7</div>
+                                    <div class="stat-label">Rating</div>
+                                </div>
+                            </div>
+                            
+                            <div class="property-metrics">
+                                <div class="metric-item performance-good">
+                                    <div class="metric-icon">⚡</div>
+                                    <span>4.1m avg response</span>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon">🔧</div>
+                                    <span>24 active requests</span>
+                                </div>
+                            </div>
+                            
+                            <div class="property-actions">
+                                <button class="property-btn btn-primary">View Details</button>
+                                <button class="property-btn btn-secondary">Reports</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="property-card">
+                        <div class="property-image">
+                            🏡
+                            <span class="property-badge badge-residential">Residential</span>
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-name">Lakeside Villas</h3>
+                            <p class="property-address">
+                                <span>📍</span> 345 Lake Shore Dr, Emeryville, CA 94608
+                            </p>
+                            
+                            <div class="property-stats">
+                                <div class="stat">
+                                    <div class="stat-value">48</div>
+                                    <div class="stat-label">Units</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">100%</div>
+                                    <div class="stat-label">Occupancy</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">4.8</div>
+                                    <div class="stat-label">Rating</div>
+                                </div>
+                            </div>
+                            
+                            <div class="property-metrics">
+                                <div class="metric-item performance-good">
+                                    <div class="metric-icon">⚡</div>
+                                    <span>2.2m avg response</span>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon">🔧</div>
+                                    <span>5 active requests</span>
+                                </div>
+                            </div>
+                            
+                            <div class="property-actions">
+                                <button class="property-btn btn-primary">View Details</button>
+                                <button class="property-btn btn-secondary">Reports</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="property-card">
+                        <div class="property-image">
+                            🏢
+                            <span class="property-badge badge-commercial">Commercial</span>
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-name">Tech Park Plaza</h3>
+                            <p class="property-address">
+                                <span>📍</span> 2100 Technology Way, San Jose, CA 95110
+                            </p>
+                            
+                            <div class="property-stats">
+                                <div class="stat">
+                                    <div class="stat-value">72</div>
+                                    <div class="stat-label">Units</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">88%</div>
+                                    <div class="stat-label">Occupancy</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">4.3</div>
+                                    <div class="stat-label">Rating</div>
+                                </div>
+                            </div>
+                            
+                            <div class="property-metrics">
+                                <div class="metric-item performance-warning">
+                                    <div class="metric-icon">⚡</div>
+                                    <span>6.8m avg response</span>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon">🔧</div>
+                                    <span>15 active requests</span>
+                                </div>
+                            </div>
+                            
+                            <div class="property-actions">
+                                <button class="property-btn btn-primary">View Details</button>
+                                <button class="property-btn btn-secondary">Reports</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="property-card">
+                        <div class="property-image">
+                            🏠
+                            <span class="property-badge badge-residential">Residential</span>
+                        </div>
+                        <div class="property-content">
+                            <h3 class="property-name">Garden Grove Apartments</h3>
+                            <p class="property-address">
+                                <span>📍</span> 789 Garden Way, Alameda, CA 94501
+                            </p>
+                            
+                            <div class="property-stats">
+                                <div class="stat">
+                                    <div class="stat-value">96</div>
+                                    <div class="stat-label">Units</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">91%</div>
+                                    <div class="stat-label">Occupancy</div>
+                                </div>
+                                <div class="stat">
+                                    <div class="stat-value">4.4</div>
+                                    <div class="stat-label">Rating</div>
+                                </div>
+                            </div>
+                            
+                            <div class="property-metrics">
+                                <div class="metric-item performance-good">
+                                    <div class="metric-icon">⚡</div>
+                                    <span>3.9m avg response</span>
+                                </div>
+                                <div class="metric-item">
+                                    <div class="metric-icon">🔧</div>
+                                    <span>9 active requests</span>
+                                </div>
+                            </div>
+                            
+                            <div class="property-actions">
+                                <button class="property-btn btn-primary">View Details</button>
+                                <button class="property-btn btn-secondary">Reports</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+        
